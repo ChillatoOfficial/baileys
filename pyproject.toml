@@ -43,11 +43,28 @@ Documentation = "https://github.com/ChillatoOfficial/baileys/blob/main/DOCS.md"
 Issues = "https://github.com/ChillatoOfficial/baileys/issues"
 Upstream = "https://github.com/WhiskeySockets/Baileys"
 
-[tool.setuptools.packages.find]
-include = ["baileys*"]
+# Layout "flat": la radice del repo E' il package `baileys`.
+[tool.setuptools]
+package-dir = { "baileys" = "." }
+packages = [
+  "baileys",
+  "baileys.Defaults",
+  "baileys.Signal",
+  "baileys.Socket",
+  "baileys.Socket.Client",
+  "baileys.Types",
+  "baileys.Utils",
+  "baileys.WABinary",
+  "baileys.WAM",
+  "baileys.WAProto",
+  "baileys.WAUSync",
+  "baileys.WAUSync.Protocols",
+]
 
 [tool.setuptools.package-data]
-baileys = ["WAProto/*.proto", "WAM/*.json", "py.typed"]
+"baileys.WAProto" = ["*.proto"]
+"baileys.WAM" = ["*.json"]
+baileys = ["py.typed"]
 
 [tool.pytest.ini_options]
 asyncio_default_fixture_loop_scope = "function"
